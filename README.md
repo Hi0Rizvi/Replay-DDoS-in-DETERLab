@@ -16,7 +16,7 @@ NOTE: controller.sh requires protobuf. Change your directory accordingly in cont
 **Step 4:** Use "pssh -h hosts.txt -p 11 -t 100000000 -I <./client-1.sh" to install LDPlayer in all the clients. A sample hosts.txt is also given. Here, I run client-1.sh in 11 machines parallel. 
 Server, controller, and clients should be ready by now. 
 
-**Step 5:** Keep the raw files in /tmp/ directory of the controller. Raw files can be found in /nfs/lander/dns/attack_data/B_Root_DDoS_raw directory. You can try with pcap or text-formatted files too. But for me raw files gave me the best outcome. 
+**Step 5:** Keep the raw attack files in /tmp/ directory of the controller. I used the recommended raw format files. Please refer to LDPlayer tool to know how can we make the raw files. You can try with pcap or text-formatted files too. I used the open-source attack events: https://ant.isi.edu/datasets/all.html (search for B_Root_Anomaly-* or B_Root_Anomaly_message_question*).
 It's time to run the experiment. 
 
 **Step 6:** Start BIND using "sudo systemctl start bind9" and collectd using "sudo systemctl start collectd.service". Collectd will start saving the resource consumption. 
@@ -25,5 +25,5 @@ It's time to run the experiment.
 
 **Step 8:** Run clients: "pssh -h hosts.txt -t 0  -I <./run-clients.sh". run-clients.sh script is also given. This will run 22 clients.
 
-**Step 9:** Server evaluation: you can use tcpdump to make any server evaluation using: "sudo tcpdump -w - -i eth5 port 53  | dnsanon --tcp-list-limit 400000 -c none  -p Q -i - -o - | java -jar Test.jar". You need to check which ethernet interface is getting the incoming traffic. 
+**Step 9:** Server evaluation: you can use tcpdump to make any server evaluation using: "sudo tcpdump -w - -i eth5 port 53  | dnsanon --tcp-list-limit 400000 -c none  -p Q -i - -o - | your_program". You need to check which ethernet interface is getting the incoming traffic. You can parse the dnsanon output in your_program. You can download dnsanon from here: https://ant.isi.edu/software/dnsanon/index.html
 
