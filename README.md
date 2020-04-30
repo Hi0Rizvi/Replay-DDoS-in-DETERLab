@@ -4,4 +4,4 @@ Replaying DDoS attacks in DETERLab testbed. In this setup, we create some client
 1. LDPlayer to replay attack
 2. Collectd
 ## Setup
-Step 1: Make a DETERLab Experiment using DETERLAB.config file. Adjust the required number of nodes. 
+Step 1: Make a DETERLab Experiment using [deterlab configuration file](deterlab.conf) file. Adjust the required number of nodes. 
