@@ -7,12 +7,11 @@ Replaying DDoS attacks in DETERLab testbed. In this setup, we create some client
 
 **Step 1:** Make a DETERLab Experiment using [deterlab configuration file](deterlab.config) file. Adjust the required number of nodes as required.
 
-**Step 2:** Use the server.sh file to configure the server. 
-NOTE: I use localroot (https://localroot.isi.edu/) configuration. Adjust your server address according to the DETERLab server address. Also, you might need to change the address of resolv.conf. I also install collectd to get the resource consumption. If you do not need resource consumption, then just ignore it. If you use collectd, then you might need to change the directory for writing the csv files.
-(OPTIONAL: Also, I changed the /etc/hosts and /etc/hostname files. They are in the /users/asmrizvi/configs/ directory.)
+**Step 2:** Use the [server.sh](/Server/server.sh) file to configure the server. 
+NOTE: I use localroot (https://localroot.isi.edu/) configuration. All the configuration files can be found in [Server](/Server) directory. Adjust your server address according to the DETERLab server address. Also, you might need to change the address of resolv.conf. I also install collectd to get the resource consumption. If you do not need resource consumption, then just ignore it. If you use collectd, then you might need to change the directory for writing the csv files.
 
-**Step 3:** Use Controller/controller.sh to configure the controller. 
-NOTE: controller.sh requires protobuf. I keep the protobuf in the DETERLab home directory. Change your directory accordingly in controller.sh. I also use the same directory for LDPlayer. The tar files for both protobuf and LDPlayer are given. 
+**Step 3:** Use [controller.sh](/Controller/controller.sh) to configure the controller. 
+NOTE: controller.sh requires protobuf. Change your directory accordingly in controller.sh. The tar files for both protobuf and LDPlayer are given. 
 
 **Step 4:** Use "pssh -h hosts.txt -p 11 -t 100000000 -I <./client-1.sh" to install LDPlayer in all the clients. A sample hosts.txt is also given. Here, I run client-1.sh in 11 machines parallel. 
 Server, controller, and clients should be ready by now. 
